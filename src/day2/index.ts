@@ -30,6 +30,7 @@ const main = async () => {
             //console.log("Lower is: ", lower, "Upper is: ", upper);
             //console.log("key is: ", key, "Pass is: ", password);
             //console.log("Count is:", count, "Pass is: ", password);
+            //test
             }
             
         }
