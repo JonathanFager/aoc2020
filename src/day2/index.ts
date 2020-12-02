@@ -14,24 +14,13 @@ const main = async () => {
     var i: number = 0;
     for (const raw of input) {
       const arrayOfStrings = raw.split(/[\s:-]+/, 4);
-      //console.log(arrayOfStrings);
-      const lower = parseInt(arrayOfStrings[0]);
-      const upper = parseInt(arrayOfStrings[1]);
-      const key = arrayOfStrings[2];
-      const password = arrayOfStrings[3];
-      //console.log("Lower is: ", lower, "Upper is: ", upper);
-      //console.log("key is: ", key, "Pass is: ", password);
-      var re = new RegExp(key, "g");
-      var count = (password.match(re) || []).length;
-      //console.log("Count is:", count, "Pass is: ", password);
-      if (count >= lower && count <= upper) {
-        i++;
+      var re = new RegExp(arrayOfStrings[2], "g");
+      var count = (arrayOfStrings[3].match(re) || []).length;
+      if (
+        count >= parseInt(arrayOfStrings[0]) &&
+        count <= parseInt(arrayOfStrings[1])
+      ) {
         passes++;
-      } else {
-        i++;
-        //console.log("Lower is: ", lower, "Upper is: ", upper);
-        //console.log("key is: ", key, "Pass is: ", password);
-        //console.log("Count is:", count, "Pass is: ", password);
       }
     }
     console.log("Total passes:", passes);
@@ -45,10 +34,8 @@ const main = async () => {
       const arrayOfStrings = raw.split(/[\s:-]+/, 4);
       const key = arrayOfStrings[2];
       const password = arrayOfStrings[3];
-      const lower = parseInt(arrayOfStrings[0]);
-      const upper = parseInt(arrayOfStrings[1]);
-      const lowerPosition = password.charAt(lower - 1);
-      const upperPosition = password.charAt(upper - 1);
+      const lowerPosition = password.charAt(parseInt(arrayOfStrings[0]) - 1);
+      const upperPosition = password.charAt(parseInt(arrayOfStrings[1]) - 1);
       if (lowerPosition == key || upperPosition == key) {
         if (upperPosition != lowerPosition) {
           passes++;
