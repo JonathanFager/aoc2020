@@ -2,7 +2,7 @@
 
 Faggelagges implementation of the Advent of Code challenges written in TypeScript.
 
-The template for this repository was shamefully copied from [Soma Zsják](https://github.com/sanraith)
+The template for this repository was shamefully copied from [xWafl](https://github.com/xWafl/aoc-2020-ts)
 
 ## The template came with the following functions:
 #### There are 4 different functions that parse your input:
