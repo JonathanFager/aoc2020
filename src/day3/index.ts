@@ -1,9 +1,8 @@
 import * as path from "path";
-import { readInputGrid, readInputSplit, readInputRaw, readInputGrid2 } from "../helpers/readInput";
+import { readInputGrid, readInputSplit, readInputRaw } from "../helpers/readInput";
 
 const main = async () => {
-    const input = await (
-        await (await readInputRaw(path.join(__dirname, "./input.txt"))).split("\r\n"));
+    const input = await (await(await (readInputRaw(path.join(__dirname, "./input.txt")))).split("\r\n"));
 
     part1(input);
     part2(input);
@@ -18,6 +17,7 @@ function part1(input: string[]) {
 function part2(input: string[]) {
     var allResults: number[] = [];
     var answer!: number;
+    var best!: number;
     const slopesToCheck = [
         [1, 1],
         [3, 1],
@@ -31,13 +31,23 @@ function part2(input: string[]) {
         const result = findPath(values[0], values[1], input)
         allResults.push(result[2]); 
         console.log("Total encountered trees for slope: X:", result[0], "Y:", result[1], "are", result[2]);
+
+        if (best === undefined) {
+            best = result[2];
+        } else if (result[2] < best) {
+            best = result[2];
+        }
+        
+
     }
+    
     console.log(allResults);
     answer = allResults[0];
     for (let index = 1; index < allResults.length; index++) {
         answer = answer * allResults[index];        
     }
     console.log("The result for part two is:", answer);
+    console.log("And the answers to Jakobs, one of many, problems is:", best);
 
 };
 
